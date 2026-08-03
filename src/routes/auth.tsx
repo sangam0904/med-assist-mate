@@ -50,12 +50,18 @@ function AuthPage() {
   async function handleSignIn(e: React.FormEvent) {
     e.preventDefault();
     const parsed = credentials.safeParse({ email, password });
-    if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message ?? "Invalid details");
+      return;
+    }
 
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword(parsed.data);
     setLoading(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Welcome back");
     navigate({ to: "/dashboard", replace: true });
   }
@@ -63,7 +69,10 @@ function AuthPage() {
   async function handleSignUp(e: React.FormEvent) {
     e.preventDefault();
     const parsed = credentials.safeParse({ email, password });
-    if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message ?? "Invalid details");
+      return;
+    }
 
     setLoading(true);
     const { data, error } = await supabase.auth.signUp({
@@ -74,9 +83,13 @@ function AuthPage() {
       },
     });
     setLoading(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     if (!data.session) {
-      return toast.success("Check your email to confirm your account.");
+      toast.success("Check your email to confirm your account.");
+      return;
     }
     navigate({ to: "/dashboard", replace: true });
   }
@@ -88,7 +101,8 @@ function AuthPage() {
     });
     if (result.error) {
       setLoading(false);
-      return toast.error("Google sign-in failed. Please try again.");
+      toast.error("Google sign-in failed. Please try again.");
+      return;
     }
     if (result.redirected) return;
     navigate({ to: "/dashboard", replace: true });
@@ -96,13 +110,20 @@ function AuthPage() {
 
   async function handleReset() {
     const parsed = z.string().email().safeParse(email.trim());
-    if (!parsed.success) return toast.error("Enter your email above first");
+    if (!parsed.success) {
+      toast.error("Enter your email above first");
+      return;
+    }
     const { error } = await supabase.auth.resetPasswordForEmail(parsed.data, {
       redirectTo: `${window.location.origin}/reset-password`,
     });
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Password reset link sent to your email");
   }
+
 
   return (
     <div className="gradient-hero flex min-h-screen items-center justify-center px-4 py-10">
