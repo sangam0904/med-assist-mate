@@ -69,63 +69,109 @@ const FEATURES = [
 
 function Landing() {
   return (
-    <div className="min-h-screen bg-background">
-      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
-        <div className="flex items-center gap-2.5">
-          <img src={logo} alt="" width={36} height={36} className="size-9" />
-          <span className="font-display text-lg font-semibold tracking-tight">{APP_NAME}</span>
+    <div className="relative min-h-screen overflow-hidden bg-background">
+      {/* ambient glass orbs */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 gradient-hero">
+        <div className="glass-orb floaty absolute -left-24 top-10 size-80 bg-primary" />
+        <div
+          className="glass-orb floaty absolute -right-16 top-40 size-96 bg-accent"
+          style={{ animationDelay: "1.5s" }}
+        />
+        <div
+          className="glass-orb floaty absolute bottom-10 left-1/3 size-72 bg-chart-2"
+          style={{ animationDelay: "3s" }}
+        />
+      </div>
+
+      <header className="sticky top-0 z-30 px-4 pt-4 sm:px-6">
+        <div className="glass-panel float-in mx-auto flex w-full max-w-6xl items-center justify-between rounded-2xl px-4 py-3">
+          <div className="flex items-center gap-2.5">
+            <img src={logo} alt="" width={36} height={36} className="size-9" />
+            <span className="font-display text-lg font-semibold tracking-tight">{APP_NAME}</span>
+          </div>
+          <Button asChild size="sm">
+            <Link to="/auth">Sign in</Link>
+          </Button>
         </div>
-        <Button asChild size="sm">
-          <Link to="/auth">Sign in</Link>
-        </Button>
       </header>
 
-      <section className="gradient-hero">
+      <section>
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-20">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+            <span
+              className="glass-card float-in inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground"
+              style={{ animationDelay: "0.05s" }}
+            >
               <ShieldCheck className="size-3.5 text-primary" />
               Private, encrypted health records
             </span>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl">
+            <h1
+              className="float-in mt-5 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl"
+              style={{ animationDelay: "0.12s" }}
+            >
               Your calm, always-on AI health companion
             </h1>
-            <p className="mt-5 max-w-lg text-base text-muted-foreground sm:text-lg">
+            <p
+              className="float-in mt-5 max-w-lg text-base text-muted-foreground sm:text-lg"
+              style={{ animationDelay: "0.2s" }}
+            >
               MedAssist AI helps you understand symptoms, decode lab reports, remember your
               medicines and track daily health — with clear guidance on when to see a doctor.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div
+              className="float-in mt-8 flex flex-wrap gap-3"
+              style={{ animationDelay: "0.28s" }}
+            >
               <Button asChild size="lg">
                 <Link to="/auth">
                   Get started free <ArrowRight className="size-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="outline" className="glass-panel">
                 <Link to="/auth">I already have an account</Link>
               </Button>
             </div>
-            <p className="mt-6 max-w-md text-xs text-muted-foreground">{MEDICAL_DISCLAIMER}</p>
+            <p
+              className="float-in mt-6 max-w-md text-xs text-muted-foreground"
+              style={{ animationDelay: "0.36s" }}
+            >
+              {MEDICAL_DISCLAIMER}
+            </p>
           </div>
           <div className="relative">
-            <img
-              src={heroImage}
-              alt="Doctor reviewing a patient's health dashboard on a tablet"
-              width={1280}
-              height={1024}
-              className="w-full rounded-3xl border border-border shadow-lift"
-            />
+            <div
+              className="glass-card float-in floaty overflow-hidden p-3"
+              style={{ animationDelay: "0.3s" }}
+            >
+              <img
+                src={heroImage}
+                alt="Doctor reviewing a patient's health dashboard on a tablet"
+                width={1280}
+                height={1024}
+                className="w-full rounded-2xl"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-2xl font-semibold sm:text-3xl">Everything your health needs, together</h2>
-        <p className="mt-2 max-w-xl text-muted-foreground">
+        <h2 className="float-in text-2xl font-semibold sm:text-3xl">
+          Everything your health needs, together
+        </h2>
+        <p
+          className="float-in mt-2 max-w-xl text-muted-foreground"
+          style={{ animationDelay: "0.08s" }}
+        >
           Six connected tools that turn scattered health worries into clear, tracked next steps.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map(({ icon: Icon, title, body }) => (
-            <article key={title} className="surface-card p-5 transition-shadow hover:shadow-lift">
+          {FEATURES.map(({ icon: Icon, title, body }, i) => (
+            <article
+              key={title}
+              className="glass-card float-in p-5 transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-lift"
+              style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+            >
               <span className="inline-flex size-10 items-center justify-center rounded-xl bg-primary-soft text-primary">
                 <Icon className="size-5" />
               </span>
@@ -137,7 +183,7 @@ function Landing() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6">
-        <div className="surface-card gradient-primary flex flex-col items-start gap-4 p-8 text-primary-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="glass-card gradient-primary float-in flex flex-col items-start gap-4 p-8 text-primary-foreground sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Start your health file today</h2>
             <p className="mt-1 text-sm opacity-90">
@@ -150,11 +196,12 @@ function Landing() {
         </div>
       </section>
 
-      <footer className="border-t border-border py-8">
-        <div className="mx-auto w-full max-w-6xl px-4 text-xs text-muted-foreground sm:px-6">
+      <footer className="glass-panel">
+        <div className="mx-auto w-full max-w-6xl px-4 py-8 text-xs text-muted-foreground sm:px-6">
           © {new Date().getFullYear()} {APP_NAME}. {MEDICAL_DISCLAIMER}
         </div>
       </footer>
     </div>
   );
 }
+
