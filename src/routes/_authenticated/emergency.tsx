@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AlertTriangle, Phone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { NearbyMap } from "@/components/nearby-map";
 import { EMERGENCY_NUMBERS, MEDICAL_DISCLAIMER } from "@/lib/constants";
 
 export const Route = createFileRoute("/_authenticated/emergency")({
@@ -80,6 +81,8 @@ function EmergencyPage() {
           </a>
         ))}
       </section>
+
+      <NearbyMap />
 
       <section className="surface-card space-y-2 p-5">
         <h2 className="text-base font-semibold">Your emergency card</h2>

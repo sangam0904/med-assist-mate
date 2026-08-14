@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { MagnifierLens } from "@/components/magnifier-lens";
 import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
@@ -146,6 +147,7 @@ function RootComponent() {
       <ThemeProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
+        <MagnifierLens />
         <Toaster position="top-right" richColors />
       </ThemeProvider>
     </QueryClientProvider>
