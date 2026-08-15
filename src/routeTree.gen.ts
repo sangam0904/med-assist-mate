@@ -17,6 +17,7 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedEmergencyRouteImport } from './routes/_authenticated/emergency'
 import { Route as AuthenticatedHealthToolsRouteImport } from './routes/_authenticated/health-tools'
 import { Route as AuthenticatedMedicinesRouteImport } from './routes/_authenticated/medicines'
+import { Route as AuthenticatedNearbyRouteImport } from './routes/_authenticated/nearby'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
 import { Route as AuthenticatedSymptomsRouteImport } from './routes/_authenticated/symptoms'
@@ -64,6 +65,11 @@ const AuthenticatedMedicinesRoute = AuthenticatedMedicinesRouteImport.update({
   path: '/medicines',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedNearbyRoute = AuthenticatedNearbyRouteImport.update({
+  id: '/nearby',
+  path: '/nearby',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/emergency': typeof AuthenticatedEmergencyRoute
   '/health-tools': typeof AuthenticatedHealthToolsRoute
   '/medicines': typeof AuthenticatedMedicinesRoute
+  '/nearby': typeof AuthenticatedNearbyRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/reports': typeof AuthenticatedReportsRoute
   '/symptoms': typeof AuthenticatedSymptomsRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/emergency': typeof AuthenticatedEmergencyRoute
   '/health-tools': typeof AuthenticatedHealthToolsRoute
   '/medicines': typeof AuthenticatedMedicinesRoute
+  '/nearby': typeof AuthenticatedNearbyRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/reports': typeof AuthenticatedReportsRoute
   '/symptoms': typeof AuthenticatedSymptomsRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/_authenticated/emergency': typeof AuthenticatedEmergencyRoute
   '/_authenticated/health-tools': typeof AuthenticatedHealthToolsRoute
   '/_authenticated/medicines': typeof AuthenticatedMedicinesRoute
+  '/_authenticated/nearby': typeof AuthenticatedNearbyRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/reports': typeof AuthenticatedReportsRoute
   '/_authenticated/symptoms': typeof AuthenticatedSymptomsRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/emergency'
     | '/health-tools'
     | '/medicines'
+    | '/nearby'
     | '/profile'
     | '/reports'
     | '/symptoms'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/emergency'
     | '/health-tools'
     | '/medicines'
+    | '/nearby'
     | '/profile'
     | '/reports'
     | '/symptoms'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/_authenticated/emergency'
     | '/_authenticated/health-tools'
     | '/_authenticated/medicines'
+    | '/_authenticated/nearby'
     | '/_authenticated/profile'
     | '/_authenticated/reports'
     | '/_authenticated/symptoms'
@@ -258,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMedicinesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/nearby': {
+      id: '/_authenticated/nearby'
+      path: '/nearby'
+      fullPath: '/nearby'
+      preLoaderRoute: typeof AuthenticatedNearbyRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/profile': {
       id: '/_authenticated/profile'
       path: '/profile'
@@ -308,6 +327,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedEmergencyRoute: typeof AuthenticatedEmergencyRoute
   AuthenticatedHealthToolsRoute: typeof AuthenticatedHealthToolsRoute
   AuthenticatedMedicinesRoute: typeof AuthenticatedMedicinesRoute
+  AuthenticatedNearbyRoute: typeof AuthenticatedNearbyRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
   AuthenticatedSymptomsRoute: typeof AuthenticatedSymptomsRoute
@@ -320,6 +340,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedEmergencyRoute: AuthenticatedEmergencyRoute,
   AuthenticatedHealthToolsRoute: AuthenticatedHealthToolsRoute,
   AuthenticatedMedicinesRoute: AuthenticatedMedicinesRoute,
+  AuthenticatedNearbyRoute: AuthenticatedNearbyRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedReportsRoute: AuthenticatedReportsRoute,
   AuthenticatedSymptomsRoute: AuthenticatedSymptomsRoute,

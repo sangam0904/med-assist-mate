@@ -6,6 +6,7 @@ import {
   HeartPulse,
   LayoutDashboard,
   LogOut,
+  MapPin,
   Menu,
   MessageSquareHeart,
   Moon,
@@ -41,6 +42,7 @@ const NAV = [
   { to: "/reports", label: "Lab Reports", icon: FileText },
   { to: "/medicines", label: "Medicines", icon: Pill },
   { to: "/health-tools", label: "Health Tools", icon: Activity },
+  { to: "/nearby", label: "Find Care", icon: MapPin },
   { to: "/emergency", label: "Emergency", icon: Phone },
   { to: "/profile", label: "Profile", icon: UserRound },
 ] as const;
