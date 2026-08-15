@@ -35,7 +35,7 @@ function ChatIndex() {
     navigate({
       to: "/chat/$threadId",
       params: { threadId: id },
-      search: seed ? { q: seed } : {},
+      search: seed ? { q: seed } : undefined,
     });
   }
 

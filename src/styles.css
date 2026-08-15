@@ -218,26 +218,6 @@
   box-shadow: var(--shadow-soft);
 }
 
-@utility glass-card {
-  background: color-mix(in oklab, var(--color-card) 45%, transparent);
-  border: 1px solid color-mix(in oklab, var(--color-foreground) 10%, transparent);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(20px) saturate(160%);
-}
-
-@utility glass-panel {
-  background: color-mix(in oklab, var(--color-card) 35%, transparent);
-  border: 1px solid color-mix(in oklab, var(--color-foreground) 8%, transparent);
-  backdrop-filter: blur(24px) saturate(150%);
-}
-
-@utility glass-orb {
-  filter: blur(80px);
-  opacity: 0.7;
-  border-radius: 9999px;
-}
-
 @utility gradient-hero {
   background-image: var(--gradient-hero);
 }
@@ -249,40 +229,3 @@
 @utility shadow-lift {
   box-shadow: var(--shadow-lift);
 }
-
-@keyframes float-in {
-  from {
-    opacity: 0;
-    transform: translateY(28px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes floaty {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@utility float-in {
-  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@utility floaty {
-  animation: floaty 6s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .float-in,
-  .floaty {
-    animation: none !important;
-  }
-}
-

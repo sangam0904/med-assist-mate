@@ -24,8 +24,9 @@ import { MEDICAL_DISCLAIMER } from "@/lib/constants";
 import logo from "@/assets/medassist-logo.png";
 
 export const Route = createFileRoute("/_authenticated/chat/$threadId")({
-  validateSearch: (search: Record<string, unknown>): { q?: string } =>
-    typeof search["q"] === "string" ? { q: search["q"] as string } : {},
+  validateSearch: (search: Record<string, unknown>) => ({
+    q: typeof search["q"] === "string" ? (search["q"] as string) : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Conversation — MedAssist AI" },
@@ -97,7 +98,7 @@ function ChatWindow({
 }: {
   threadId: string;
   initial: UIMessage[];
-  seed?: string | undefined;
+  seed?: string;
 }) {
   const transport = useMemo(() => new DefaultChatTransport({ api: "/api/chat" }), []);
   const titleFn = useServerFn(generateThreadTitle);
