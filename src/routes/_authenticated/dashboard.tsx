@@ -5,6 +5,7 @@ import {
   ArrowRight,
   Droplets,
   FileText,
+  MapPin,
   MessageSquareHeart,
   Pill,
   Stethoscope,
@@ -37,6 +38,7 @@ const QUICK_ACTIONS = [
   { to: "/symptoms", label: "Check symptoms", icon: Stethoscope },
   { to: "/reports", label: "Analyse a report", icon: FileText },
   { to: "/health-tools", label: "Log health data", icon: Activity },
+  { to: "/nearby", label: "Find care nearby", icon: MapPin },
 ] as const;
 
 type Stats = {
