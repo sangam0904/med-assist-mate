@@ -27,3 +27,9 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+# Deployed link 
+
+https://med-assist-mate.lovable.app
+
+click and see the website ..
